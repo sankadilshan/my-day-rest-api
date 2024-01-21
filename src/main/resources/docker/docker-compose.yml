@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_DB: expense
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: 'dpage/pgadmin4:latest'
+    container_name: pgadmin4_container
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sankadilshan9686@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 8080:8080
