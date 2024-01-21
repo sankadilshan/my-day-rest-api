@@ -1,0 +1,2 @@
+ALTER TABLE mydayUser
+    ALTER COLUMN password TYPE VARCHAR(100)

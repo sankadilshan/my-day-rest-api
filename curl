@@ -1,0 +1,6 @@
+curl -X POST http://localhost:8081/api/v1/auth/token
+   -H "Content-Type: application/json"
+   -d '{
+          "email": "mydayauseradmin0@yopmail.com",
+          "password": "mydayuseradmin0"
+        }'
