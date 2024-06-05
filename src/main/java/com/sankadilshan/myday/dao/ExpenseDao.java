@@ -11,8 +11,6 @@ public interface ExpenseDao {
 
     List<ExpenseResponse> queryAllExpenses();
 
-    List<MydayUserResponse> queryAllMydayUsers();
-
     List<Map<String, Object>> queryAllUsersWithExpenses();
 
     List<ExpenseResponse> queryExpenseByUserId(Long id);

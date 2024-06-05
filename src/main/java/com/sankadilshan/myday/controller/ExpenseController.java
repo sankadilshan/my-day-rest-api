@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/expense")
 public class ExpenseController {
     
     private ExpenseService expenseService;
@@ -27,28 +27,21 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
-    @GetMapping("/expense")
+    @GetMapping("/")
     public GeneralResponse queryAllExpenses() {
         log.info("Expense Service :: query all expense :: controller level");
         List<ExpenseResponse> expenseResponses = expenseService.queryAllExpenses();
         return ResponseUtil.getGeneralResponse(expenseResponses);
     }
 
-    @GetMapping("/expense/user")
+    @GetMapping("/user")
     public GeneralResponse queryExpenseByUserId(@RequestParam("userId") Long id) {
         log.info("Expense Service :: query expense by userId: {} :: controller level", id);
         List<ExpenseResponse> expenseResponses = expenseService.queryExpenseByUserId(id);
         return ResponseUtil.getGeneralResponse(expenseResponses);
     }
 
-    @GetMapping("/mydayuser")
-    public GeneralResponse queryAllMydayUsers() {
-        log.info("Expense Service :: query all mydayuser :: controller level");
-        List<MydayUserResponse> mydayUserResponses = expenseService.queryAllMydayUsers();
-        return ResponseUtil.getGeneralResponse(mydayUserResponses);
-    }
-
-    @GetMapping("/")
+    @GetMapping("/user/expenses")
     public GeneralResponse queryAllMydayUaersWithExpense() {
         log.info("Expense Service :: query all mydayuser, expense :: controller level");
         List<Map<String, Object>> queryMapResponse = expenseService.queryAllUsersWithExpense();

@@ -8,7 +8,6 @@ import java.util.Map;
 
 public interface ExpenseService {
     List<ExpenseResponse> queryAllExpenses();
-    List<MydayUserResponse> queryAllMydayUsers();
 
     List<Map<String, Object>> queryAllUsersWithExpense();
 

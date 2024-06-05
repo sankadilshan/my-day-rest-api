@@ -34,11 +34,6 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseDao.queryAllExpenses();
     }
 
-    @Override
-    public List<MydayUserResponse> queryAllMydayUsers() {
-        log.info("Expense Service :: query all mydayuser :: service level");
-        return expenseDao.queryAllMydayUsers();
-    }
 
     @Override
     public List<Map<String, Object>> queryAllUsersWithExpense() {
