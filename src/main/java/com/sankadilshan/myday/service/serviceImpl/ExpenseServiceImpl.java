@@ -49,7 +49,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         List<Map<String, Object>> response= new ArrayList<>();
 
         if (size > 0) {
-            List<Long> ids = queryMapResponse.stream().map(qr-> (long)qr.get("mid")).toList().stream().distinct().toList();
+            List<Long> ids = queryMapResponse.stream().map(qr-> (long)qr.get("mid")).collect(Collectors.toList()).stream().distinct().collect(Collectors.toList());
             ids.forEach(
                     id-> {
                         Map<String, Object> mapById = queryMapResponse.stream().filter(qm -> qm.get("mId") == id).findFirst().orElseGet(null);
