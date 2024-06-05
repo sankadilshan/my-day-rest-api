@@ -75,9 +75,7 @@ public class MydayUserDaoImpl implements MyDayUserDao {
         try {
             int res = namedTemplate.update(DaoSql.INSERT_MYDAYUSER, parameters);
             if (res > 0) {
-                String token = jwtService.generateToken(myDayUser.getEmail());
                 return AuthResponse.builder()
-                        .token(token)
                         .message(Constants.AUTH_MESSAGE)
                         .status(HttpStatus.OK)
                         .build();
