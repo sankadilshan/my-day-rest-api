@@ -6,8 +6,7 @@ import com.sankadilshan.myday.model.dto.MydayUserResponse;
 import com.sankadilshan.myday.service.ExpenseService;
 import com.sankadilshan.myday.utils.MapUtil;
 import com.sankadilshan.myday.utils.PersistenceUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class ExpenseServiceImpl implements ExpenseService {
-
-    private final static Logger logger = LoggerFactory.getLogger(ExpenseServiceImpl.class);
 
     private ExpenseDao expenseDao;
     private MapUtil mapUtil;
@@ -32,19 +30,19 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseResponse> queryAllExpenses() {
-        logger.info("Expense Service :: query all expenses :: service level");
+        log.info("Expense Service :: query all expenses :: service level");
         return expenseDao.queryAllExpenses();
     }
 
     @Override
     public List<MydayUserResponse> queryAllMydayUsers() {
-        logger.info("Expense Service :: query all mydayuser :: service level");
+        log.info("Expense Service :: query all mydayuser :: service level");
         return expenseDao.queryAllMydayUsers();
     }
 
     @Override
     public List<Map<String, Object>> queryAllUsersWithExpense() {
-        logger.info("Expense Service :: query all mydayuser, expense :: service level");
+        log.info("Expense Service :: query all mydayuser, expense :: service level");
 
         List<Map<String, Object>> queryMapResponse = expenseDao.queryAllUsersWithExpenses();
         int size = queryMapResponse.size();
@@ -90,7 +88,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseResponse> queryExpenseByUserId(Long id) {
-        logger.info("Expense Service :: query expense by userId :: service level");
+        log.info("Expense Service :: query expense by userId :: service level");
         return expenseDao.queryExpenseByUserId(id);
     }
 

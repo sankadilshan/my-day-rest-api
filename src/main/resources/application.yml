@@ -2,10 +2,10 @@ server:
   port: 8081
 datasource:
   db:
-    username: root
+    username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5431/expense
+    url: jdbc:postgresql://localhost:5432/expense
   query-timeout: 5
   function-timeout: 3
   max-active: 10

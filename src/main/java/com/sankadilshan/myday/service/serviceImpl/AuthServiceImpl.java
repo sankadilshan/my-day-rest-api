@@ -7,8 +7,7 @@ import com.sankadilshan.myday.model.dto.AuthResponse;
 import com.sankadilshan.myday.model.dto.MyDayUserInput;
 import com.sankadilshan.myday.security.JwtService;
 import com.sankadilshan.myday.service.AuthService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,8 +19,8 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class AuthServiceImpl implements AuthService {
-    private final static Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
     private MyDayUserDao userDao;
     private AuthenticationManager authenticationManager;
     private JwtService jwtService;
@@ -35,13 +34,13 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthResponse signup(MyDayUserInput userInput) {
-        logger.info("Auth Service :: signup new user :: service level");
+        log.info("Auth Service :: signup new user :: service level");
         return userDao.signUp(userInput);
     }
 
     @Override
     public String generateToken(Map<String, Object> user) {
-        logger.info("Auth Service :: generate token :: service level");
+        log.info("Auth Service :: generate token :: service level");
         Object username = user.get("email");
         Object password = user.get("password");
         try {
@@ -54,7 +53,7 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException(e.getMessage());
         }
         catch (Exception e) {
-            logger.error(e.getMessage());
+            log.error(e.getMessage());
             throw new UserNameNotFoundException(username.toString());
         }
         return null;

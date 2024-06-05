@@ -42,7 +42,7 @@ public class ExpenseDaoImpl implements ExpenseDao {
 
     @Override
     public List<ExpenseResponse> queryAllExpenses() {
-        logger.info("Expense Service :: query all expense :: repository level");
+        logger.info("Expense Dao :: query all expense :: repository level");
 
         List<ExpenseResponse> queryResponse = namedTemplate.query(DaoSql.GET_ALL_EXPENSES, new PersistenceUtil.Expense.ExpenseResponseMapper());
         Stream.of(Arrays.asList(queryResponse)).forEach( q-> logger.info(q.toString()));
@@ -51,7 +51,7 @@ public class ExpenseDaoImpl implements ExpenseDao {
 
     @Override
     public List<MydayUserResponse> queryAllMydayUsers() {
-        logger.info("Expense service :: query all mydayuser :: repository level");
+        logger.info("Expense Dao :: query all mydayuser :: repository level");
 
         List<MydayUserResponse> queryResponse = namedTemplate.query(DaoSql.GET_ALL_MY_DAY_USERS, new PersistenceUtil.MydayUser.MydayUserRowMapper());
         Stream.of(Arrays.asList(queryResponse)).forEach( q-> logger.info(q.toString()));
