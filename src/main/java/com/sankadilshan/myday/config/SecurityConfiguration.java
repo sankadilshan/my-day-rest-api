@@ -2,7 +2,7 @@ package com.sankadilshan.myday.config;
 
 import com.sankadilshan.myday.Constants;
 import com.sankadilshan.myday.dao.impl.MyDayUserDetailsService;
-import com.sankadilshan.myday.security.JwtAuthFilter;
+import com.sankadilshan.myday.security.JwtVerifierFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,11 +29,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    private JwtAuthFilter jwtAuthFilter;
+    private JwtVerifierFilter jwtVerifierFilter;
 
     @Autowired
-    public SecurityConfiguration(JwtAuthFilter jwtAuthFilter){
-        this.jwtAuthFilter = jwtAuthFilter;
+    public SecurityConfiguration(JwtVerifierFilter jwtVerifierFilter){
+        this.jwtVerifierFilter = jwtVerifierFilter;
     }
     @Bean
     public UserDetailsService userDetailsService() {
@@ -55,7 +55,7 @@ public class SecurityConfiguration {
                 )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
-                        jwtAuthFilter,
+                        jwtVerifierFilter,
                         UsernamePasswordAuthenticationFilter.class
                 )
                 .exceptionHandling(Customizer.withDefaults())

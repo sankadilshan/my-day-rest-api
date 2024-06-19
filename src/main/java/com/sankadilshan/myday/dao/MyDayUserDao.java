@@ -1,6 +1,8 @@
 package com.sankadilshan.myday.dao;
 
+import com.sankadilshan.myday.exception.DataAccessException;
 import com.sankadilshan.myday.model.MyDayUser;
+import com.sankadilshan.myday.model.Roles;
 import com.sankadilshan.myday.model.dto.AuthResponse;
 import com.sankadilshan.myday.model.dto.MyDayUserInput;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
@@ -15,5 +17,7 @@ public interface MyDayUserDao {
 
     AuthResponse signUp(MyDayUserInput userInput);
 
-    List<MydayUserResponse> queryAllMydayUsers();
+    List<MydayUserResponse> queryAllMydayUsers() throws Exception;
+
+    Roles fetchRoleById(Long id);
 }

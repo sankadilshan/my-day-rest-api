@@ -2,7 +2,6 @@ package com.sankadilshan.myday.controller;
 
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
 import com.sankadilshan.myday.model.dto.GeneralResponse;
-import com.sankadilshan.myday.model.dto.MydayUserResponse;
 import com.sankadilshan.myday.service.ExpenseService;
 import com.sankadilshan.myday.utils.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;

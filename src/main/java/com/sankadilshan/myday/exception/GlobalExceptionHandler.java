@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
 
 
@@ -39,6 +40,12 @@ public class GlobalExceptionHandler  {
     public ResponseEntity<Object> handleIBadCredentailException(BadCredentialException badCredentialException){
         HttpStatus status = HttpStatus.BAD_REQUEST;
         return errorResponseBuilder(status, badCredentialException.getMessage());
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity<Object> handleDataAccessException(DataAccessException dataAccessException){
+        HttpStatus status = HttpStatus.NO_CONTENT;
+        return errorResponseBuilder(status, dataAccessException.getMessage());
     }
     private ResponseEntity<Object> errorResponseBuilder(HttpStatus status, String message) {
         ErrorResponse errorResponse = new ErrorResponse(status,status.value(), message, LocalDateTime.now());

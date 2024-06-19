@@ -23,7 +23,7 @@ public class DateUtil {
         return LocalDateTime.parse(dStr, dateTimeFormatter);
     }
 
-    public static Date addDate(int minutes){
+    public static Date addMinutes(int minutes){
         Date date =  new Date();
         date.setMinutes(date.getMinutes() +  minutes);
         return date;

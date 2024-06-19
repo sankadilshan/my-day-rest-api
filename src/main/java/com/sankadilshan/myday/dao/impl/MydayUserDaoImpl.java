@@ -5,6 +5,7 @@ import com.sankadilshan.myday.dao.MyDayUserDao;
 import com.sankadilshan.myday.dao.sql.DaoSql;
 import com.sankadilshan.myday.exception.UserSignUpFailedException;
 import com.sankadilshan.myday.model.MyDayUser;
+import com.sankadilshan.myday.model.Roles;
 import com.sankadilshan.myday.model.dto.AuthResponse;
 import com.sankadilshan.myday.model.dto.MyDayUserInput;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
@@ -12,6 +13,7 @@ import com.sankadilshan.myday.security.JwtService;
 import com.sankadilshan.myday.utils.PersistenceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -28,18 +30,17 @@ import java.util.stream.Stream;
 @Transactional
 public class MydayUserDaoImpl implements MyDayUserDao {
 
-    private NamedParameterJdbcTemplate namedTemplate;
-    private PasswordEncoder passwordEncoder;
-    private JwtService jwtService;
+    private final NamedParameterJdbcTemplate namedTemplate;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     @Autowired
-    public MydayUserDaoImpl(NamedParameterJdbcTemplate namedTemplate,
-                            PasswordEncoder passwordEncoder,
-                            JwtService jwtService) {
-        this.namedTemplate= namedTemplate;
-        this.passwordEncoder= passwordEncoder;
-        this.jwtService= jwtService;
+    public MydayUserDaoImpl(NamedParameterJdbcTemplate namedTemplate, PasswordEncoder passwordEncoder, JwtService jwtService) {
+        this.namedTemplate = namedTemplate;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
+
     @Override
     public MyDayUser queryFindByUsername(String username) {
         log.info("MydayUser Service :: query user by username :: repository level");
@@ -53,7 +54,7 @@ public class MydayUserDaoImpl implements MyDayUserDao {
     public void insertMydayUser(MyDayUserInput myDayUser) {
         log.info("MydayUser Service :: insert new user :: repository level");
 
-        MapSqlParameterSource parameters=  new MapSqlParameterSource();
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue(PersistenceUtil.MydayUser.USERNAME, myDayUser.getEmail());
         parameters.addValue(PersistenceUtil.MydayUser.PASSWORD, myDayUser.getPassword());
         parameters.addValue(PersistenceUtil.MydayUser.FIRST_NAME, myDayUser.getFirstName());
@@ -67,7 +68,7 @@ public class MydayUserDaoImpl implements MyDayUserDao {
     public AuthResponse signUp(MyDayUserInput myDayUser) {
         log.info("Auth Service :: signup new user :: repository level");
 
-        MapSqlParameterSource parameters= new MapSqlParameterSource();
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue(PersistenceUtil.MydayUser.USERNAME, myDayUser.getEmail());
         parameters.addValue(PersistenceUtil.MydayUser.PASSWORD, encodePassword(myDayUser.getPassword()));
         parameters.addValue(PersistenceUtil.MydayUser.FIRST_NAME, myDayUser.getFirstName());
@@ -77,12 +78,9 @@ public class MydayUserDaoImpl implements MyDayUserDao {
         try {
             int res = namedTemplate.update(DaoSql.INSERT_MYDAYUSER, parameters);
             if (res > 0) {
-                return AuthResponse.builder()
-                        .message(Constants.AUTH_MESSAGE)
-                        .status(HttpStatus.OK)
-                        .build();
+                return AuthResponse.builder().message(Constants.AUTH_MESSAGE).status(HttpStatus.OK).build();
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
             throw new UserSignUpFailedException(myDayUser.getEmail());
         }
@@ -94,12 +92,29 @@ public class MydayUserDaoImpl implements MyDayUserDao {
     }
 
     @Override
-    public List<MydayUserResponse> queryAllMydayUsers() {
+    public List<MydayUserResponse> queryAllMydayUsers() throws Exception {
         log.info("Expense Dao :: query all mydayuser :: repository level");
+        try {
+            List<MydayUserResponse> queryResponse = namedTemplate.query(DaoSql.GET_ALL_MY_DAY_USERS, new PersistenceUtil.MydayUser.MydayUserRowMapper());
+            Stream.of(List.of(queryResponse)).forEach(q -> log.info(q.toString()));
+            return queryResponse;
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
 
-        List<MydayUserResponse> queryResponse = namedTemplate.query(DaoSql.GET_ALL_MY_DAY_USERS, new PersistenceUtil.MydayUser.MydayUserRowMapper());
-        Stream.of(Arrays.asList(queryResponse)).forEach(q-> log.info(q.toString()));
-        return queryResponse;
+    @Override
+    public Roles fetchRoleById(Long id) {
+        log.info("Expense Dao :: query all roles by userId :: repository level");
+        try {
+            MapSqlParameterSource parameters = new MapSqlParameterSource();
+            parameters.addValue(PersistenceUtil.Roles.ID, id);
+           return namedTemplate.query(DaoSql.GET_ROLE_BY_ID,parameters, new PersistenceUtil.Roles.RolesRowMapper()).get(0);
+        }catch (DataAccessException exception) {
+            throw new com.sankadilshan.myday.exception.DataAccessException();
+        }catch (Exception e) {
+            throw  new com.sankadilshan.myday.exception.DataAccessException();
+        }
     }
 
 }

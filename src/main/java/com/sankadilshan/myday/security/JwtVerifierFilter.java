@@ -17,13 +17,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-public class JwtAuthFilter extends OncePerRequestFilter {
+public class JwtVerifierFilter extends OncePerRequestFilter {
 
     private JwtService jwtService;
     private MyDayUserDetailsService userDetailsService;
 
     @Autowired
-    public JwtAuthFilter(JwtService jwtService, @Lazy MyDayUserDetailsService userDetailsService) {
+    public JwtVerifierFilter(JwtService jwtService, @Lazy MyDayUserDetailsService userDetailsService) {
         this.jwtService= jwtService;
         this.userDetailsService= userDetailsService;
     }

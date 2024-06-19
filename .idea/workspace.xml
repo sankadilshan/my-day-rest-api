@@ -4,7 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7cded52-4e01-409b-bc03-6bcf51ba288c" name="Changes" comment="logging changes" />
+    <list default="true" id="c7cded52-4e01-409b-bc03-6bcf51ba288c" name="Changes" comment="added user controller and wiring">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/controller/ExpenseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/controller/ExpenseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/ExpenseDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/ExpenseDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/MyDayUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/MyDayUserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/impl/ExpenseDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/impl/ExpenseDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/impl/MydayUserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/impl/MydayUserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/sql/DaoSql.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/sql/DaoSql.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/model/dto/MydayUserResponse$MydayUserResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/model/dto/MydayUserResponse$MydayUserResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/model/dto/MydayUserResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/model/dto/MydayUserResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/security/JwtService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/security/JwtService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/ExpenseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/ExpenseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/serviceImpl/ExpenseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/serviceImpl/ExpenseServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/DateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/DateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MyDayUser1RowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MyDayUser1RowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MydayUserRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MydayUserRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles$RolesRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles$RolesRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/docker/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/ExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/ExpenseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/MyDayUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/MyDayUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/impl/MydayUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/impl/MydayUserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/sql/DaoSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/sql/DaoSql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/model/dto/MydayUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/model/dto/MydayUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/PersistenceUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/PersistenceUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/docker/docker-compose.yml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +91,7 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src/main/resources/docker" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -101,6 +146,7 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -112,7 +158,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/learn/project/myday-backend",
+    "last_opened_file_path": "C:/learn/project/myday-backend/myday/build.gradle",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -237,7 +283,55 @@
       <option name="project" value="LOCAL" />
       <updated>1717575574438</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changes">
+      <option name="closed" value="true" />
+      <created>1717579276730</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717579276730</updated>
+    </task>
+    <task id="LOCAL-00004" summary="changes">
+      <option name="closed" value="true" />
+      <created>1717579441083</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717579441083</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changes">
+      <option name="closed" value="true" />
+      <created>1717579449999</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717579449999</updated>
+    </task>
+    <task id="LOCAL-00006" summary="signup token issue solved">
+      <option name="closed" value="true" />
+      <created>1717587586177</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717587586177</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added user controller and wiring">
+      <option name="closed" value="true" />
+      <created>1717596047144</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717596047144</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added user controller and wiring">
+      <option name="closed" value="true" />
+      <created>1717596107211</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717596107211</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,7 +347,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="logging changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="logging changes" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="signup token issue solved" />
+    <MESSAGE value="added user controller and wiring" />
+    <option name="LAST_COMMIT_MESSAGE" value="added user controller and wiring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -272,6 +369,45 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/model/MyDayUserInfo.java</url>
           <line>30</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtAuthFilter.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtAuthFilter.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtAuthFilter.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtAuthFilter.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtAuthFilter.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtAuthFilter.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/AuthService.java</url>
+          <line>12</line>
+          <properties class="com.sankadilshan.myday.service.AuthService">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

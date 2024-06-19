@@ -73,6 +73,7 @@ public final class PersistenceUtil {
                         .email(rs.getString("email"))
                         .firstName(rs.getString("firstname"))
                         .lastName(rs.getString("lastname"))
+                        .roleId(rs.getInt("id"))
                         .createdDate(DateUtil.dateTimeFormatter(rs.getString("createdDate"),DateUtil.DateConstant.YYYYMMDDHHMMSS_FORMAT))
                         .modifiedDate(DateUtil.dateTimeFormatter(rs.getString("modifiedDate"),DateUtil.DateConstant.YYYYMMDDHHMMSS_FORMAT))
                         .build();
@@ -102,6 +103,8 @@ public final class PersistenceUtil {
 
     public static class Roles {
         public static final String ROLES = "roles";
+        public static  final  String ID = "id";
+
 
         public static class RolesRowMapper implements RowMapper<com.sankadilshan.myday.model.Roles> {
 

@@ -42,7 +42,7 @@ public class JwtService {
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 //tokenLife in minutes
-                .setExpiration(DateUtil.addDate(tokenLife))
+                .setExpiration(DateUtil.addMinutes(tokenLife))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
 

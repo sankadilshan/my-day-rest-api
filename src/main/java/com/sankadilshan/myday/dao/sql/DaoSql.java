@@ -38,6 +38,14 @@ public class DaoSql {
             "to_char(modifiedDate :: timestamp , 'yyyy-mm-dd HH:mm:ss') as modifiedDate" +
             " FROM "+
             PersistenceUtil.MydayUser.MYDAYUSER;
+    public static final String GET_ROLE_BY_ID = "SELECT "+
+            "r.id, " +
+            "r.roles " +
+            "FROM "+
+            PersistenceUtil.Roles.ROLES + " r " +
+            "WHERE " +
+            "r.id = :id";
+
 
     public static final String GET_ALL_MY_DAY_USERS_WITH_EXPNSES = "SELECT " +
             "mu.id as mId," +

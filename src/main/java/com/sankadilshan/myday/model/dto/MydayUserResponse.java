@@ -1,5 +1,6 @@
 package com.sankadilshan.myday.model.dto;
 
+import com.sankadilshan.myday.model.Roles;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class MydayUserResponse {
     private String email;
     private String firstName;
     private String lastName;
+    private int roleId;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 }

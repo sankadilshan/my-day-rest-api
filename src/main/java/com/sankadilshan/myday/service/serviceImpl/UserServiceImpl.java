@@ -1,6 +1,7 @@
 package com.sankadilshan.myday.service.serviceImpl;
 
 import com.sankadilshan.myday.dao.MyDayUserDao;
+import com.sankadilshan.myday.model.Roles;
 import com.sankadilshan.myday.model.dto.MyDayUserInput;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
 import com.sankadilshan.myday.service.UserService;
@@ -19,8 +20,14 @@ public class UserServiceImpl implements UserService {
         this.myDayUserDao = dao;
     }
     @Override
-    public List<MydayUserResponse> queryAllMydayUsers() {
+    public List<MydayUserResponse> queryAllMydayUsers() throws Exception {
         log.info("User Service :: query all mydayuser :: service level");
         return myDayUserDao.queryAllMydayUsers();
+    }
+
+    @Override
+    public Roles fetchRoleById(Long id) {
+        log.info("User Service :: query role by id :: service level");
+        return myDayUserDao.fetchRoleById(id);
     }
 }
