@@ -5,6 +5,7 @@ import com.sankadilshan.myday.dao.impl.MyDayUserDetailsService;
 import com.sankadilshan.myday.security.JwtVerifierFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +21,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -30,10 +32,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
 
     private JwtVerifierFilter jwtVerifierFilter;
+    private AuthenticationEntryPoint authenticationEntryPoint;
 
     @Autowired
-    public SecurityConfiguration(JwtVerifierFilter jwtVerifierFilter){
+    public SecurityConfiguration(JwtVerifierFilter jwtVerifierFilter, @Qualifier("customAuthenticationEntryPoint") AuthenticationEntryPoint authenticationEntryPoint){
         this.jwtVerifierFilter = jwtVerifierFilter;
+        this.authenticationEntryPoint = authenticationEntryPoint;
     }
     @Bean
     public UserDetailsService userDetailsService() {
@@ -45,14 +49,18 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers(
+                        authorize
+                                .requestMatchers(
                                 "/api/v1/auth/sign",
                                 "/api/v1/auth/signup",
-                                "/swagger-ui-custom.html")
+                                "/actuator/health/expense",
+                                "/api-docs/**",
+                                "/swagger-ui/**")
                                 .permitAll()
                                 .requestMatchers("/api/v1/auth/token").hasRole(Constants.ADMIN)
                         .anyRequest().authenticated()
                 )
+                .httpBasic(basic ->  basic.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtVerifierFilter,

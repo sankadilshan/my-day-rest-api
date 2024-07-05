@@ -9,6 +9,7 @@ import com.sankadilshan.myday.model.dto.ExpenseInput;
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
 import com.sankadilshan.myday.utils.PersistenceUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 
+@Slf4j
 @Repository
 public class ExpenseDaoImpl implements ExpenseDao {
 
@@ -42,28 +44,28 @@ public class ExpenseDaoImpl implements ExpenseDao {
 
     @Override
     public List<ExpenseResponse> queryAllExpenses() {
-        logger.info("Expense Dao :: query all expense :: repository level");
+        log.info("Expense Dao :: query all expense :: repository level");
 
         List<ExpenseResponse> queryResponse = namedTemplate.query(DaoSql.GET_ALL_EXPENSES, new PersistenceUtil.Expense.ExpenseResponseMapper());
-        Stream.of(Arrays.asList(queryResponse)).forEach( q-> logger.info(q.toString()));
+        Stream.of(Arrays.asList(queryResponse)).forEach( q-> log.info(q.toString()));
         return queryResponse;
     }
 
     @Override
     public List<Map<String, Object>> queryAllUsersWithExpenses() {
-        logger.info("Expense service :: query all mydayuser, expense :: repository level");
+        log.info("Expense service :: query all mydayuser, expense :: repository level");
 
         try {
             return namedTemplate.queryForList(DaoSql.GET_ALL_MY_DAY_USERS_WITH_EXPNSES, (SqlParameterSource) null);
         }catch (Exception e){
-            logger.error(e.getMessage(),e.getCause());
+            log.error(e.getMessage(),e.getCause());
             throw new RuntimeException();
         }
     }
 
     @Override
     public List<ExpenseResponse> queryExpenseByUserId(Long id) {
-        logger.info("Expense Service :: query expense by userId :: repository level");
+        log.info("Expense Service :: query expense by userId :: repository level");
 
         MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue(PersistenceUtil.Expense.USERID, id);
@@ -72,8 +74,8 @@ public class ExpenseDaoImpl implements ExpenseDao {
     }
 
     @Override
-    public void inserExpense(ExpenseInput expenseInput) {
-        logger.info("Expense Service :: insert expense :: repository level");
+    public ExpenseResponse insertExpense(ExpenseInput expenseInput) {
+        log.info("Expense Service :: insert expense :: repository level");
 
         MapSqlParameterSource parameters = new MapSqlParameterSource();
             String currentUserName = getCurrentUserName();
@@ -86,7 +88,9 @@ public class ExpenseDaoImpl implements ExpenseDao {
             parameters.addValue(PersistenceUtil.Expense.AMOUNT, expenseInput.getAmount());
             parameters.addValue(PersistenceUtil.Expense.TYPE, expenseInput.getType());
 
-            namedTemplate.update(DaoSql.INSERT_EXPENSE, parameters);
+            int id= namedTemplate.update(DaoSql.INSERT_EXPENSE, parameters);
+            log.info("id {}",id);
+            return new ExpenseResponse();
     }
 
     private String getCurrentUserName() {

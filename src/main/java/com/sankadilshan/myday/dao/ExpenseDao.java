@@ -15,5 +15,5 @@ public interface ExpenseDao {
 
     List<ExpenseResponse> queryExpenseByUserId(Long id);
 
-    void inserExpense(ExpenseInput expenseInput) ;
+    ExpenseResponse insertExpense(ExpenseInput expenseInput) ;
 }

@@ -1,6 +1,7 @@
 package com.sankadilshan.myday.service.serviceImpl;
 
 import com.sankadilshan.myday.dao.ExpenseDao;
+import com.sankadilshan.myday.model.dto.ExpenseInput;
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
 import com.sankadilshan.myday.service.ExpenseService;
@@ -44,11 +45,11 @@ public class ExpenseServiceImpl implements ExpenseService {
         List<Map<String, Object>> response= new ArrayList<>();
 
         if (size > 0) {
-            List<Long> ids = queryMapResponse.stream().map(qr-> (long)qr.get("mid")).collect(Collectors.toList()).stream().distinct().collect(Collectors.toList());
+            List<Long> ids = queryMapResponse.stream().map(qr-> (long)qr.get("mid")).toList().stream().distinct().toList();
             ids.forEach(
                     id-> {
                         Map<String, Object> mapById = queryMapResponse.stream().filter(qm -> qm.get("mId") == id).findFirst().orElseGet(null);
-                        List<Map<String, Object>> expenseMapById = queryMapResponse.stream().filter(qm -> qm.get("mId") == id).collect(Collectors.toList());
+                        List<Map<String, Object>> expenseMapById = queryMapResponse.stream().filter(qm -> qm.get("mId") == id).toList();
                         Map<String, Object> responseMap = null;
                         if (mapById != null) {
                             responseMap = mapUtil.cloneMap(mapById,
@@ -85,6 +86,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     public List<ExpenseResponse> queryExpenseByUserId(Long id) {
         log.info("Expense Service :: query expense by userId :: service level");
         return expenseDao.queryExpenseByUserId(id);
+    }
+
+    @Override
+    public ExpenseResponse insertExpense(ExpenseInput expense) {
+        log.info("Expense Service :: insert an expense :: service level");
+        return expenseDao.insertExpense(expense);
     }
 
 }

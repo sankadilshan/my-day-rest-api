@@ -24,12 +24,11 @@ spring:
 springdoc:
   api-docs:
     path: /api-docs
-  swagger-ui:
-    path: /swagger-ui-custom.html
-    operationsSorter:   method
+#  swagger-ui:
+#    path: /swagger-ui.html
 management:
   health:
-    random:
+    expense:
       enabled: true
 #flyway:
 #  url: jdbc:postgresql://localhost:5431/expense

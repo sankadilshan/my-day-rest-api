@@ -1,5 +1,6 @@
 package com.sankadilshan.myday.service;
 
+import com.sankadilshan.myday.model.dto.ExpenseInput;
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
 
@@ -12,4 +13,6 @@ public interface ExpenseService {
     List<Map<String, Object>> queryAllUsersWithExpense();
 
     List<ExpenseResponse> queryExpenseByUserId(Long id);
+
+    ExpenseResponse insertExpense(ExpenseInput expense);
 }

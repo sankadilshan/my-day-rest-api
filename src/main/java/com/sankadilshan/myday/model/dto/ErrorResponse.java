@@ -1,20 +1,22 @@
 package com.sankadilshan.myday.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sankadilshan.myday.utils.CustomHttpStatus;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Data
+@Builder
 public class ErrorResponse {
 
-    private HttpStatus status;
+    private CustomHttpStatus status;
     private int code;
     private String message;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private LocalDateTime timestamp;
+    private LocalDateTime timeStamp = LocalDateTime.now();
 }

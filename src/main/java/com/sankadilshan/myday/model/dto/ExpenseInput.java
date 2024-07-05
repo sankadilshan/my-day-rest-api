@@ -13,5 +13,4 @@ import java.time.LocalDate;
 public class ExpenseInput {
     private double amount;
     private String type;
-    private LocalDate expenseDate;
 }

@@ -33,6 +33,7 @@ public final class PersistenceUtil {
                 try {
 
                     ExpenseResponse expenseResponse = new ExpenseResponse();
+                    expenseResponse.setId(rs.getLong("id"));
                     expenseResponse.setUserId(rs.getLong("userId"));
                     expenseResponse.setType(rs.getString("type"));
                     expenseResponse.setAmount(rs.getDouble("amount"));
@@ -90,6 +91,7 @@ public final class PersistenceUtil {
             public MyDayUser mapRow(ResultSet rs, int rowNum) throws SQLException {
                 MyDayUser myDayUser = MyDayUser
                         .builder()
+                        .id(rs.getLong("id"))
                         .email(rs.getString("email"))
                         .password(rs.getString("password"))
                         .roles(rs.getString("roles"))

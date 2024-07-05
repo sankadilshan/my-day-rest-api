@@ -47,7 +47,7 @@ public class MydayUserDaoImpl implements MyDayUserDao {
 
         MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue(PersistenceUtil.MydayUser.USERNAME, username);
-        return namedTemplate.query(DaoSql.MYDAYUSER_FIND_BY_USERNAME, parameters, new PersistenceUtil.MydayUser.MyDayUser1RowMapper()).get(0);
+        return namedTemplate.query(DaoSql.MYDAYUSER_FIND_BY_USERNAME, parameters, new PersistenceUtil.MydayUser.MyDayUser1RowMapper()) .get(0);
     }
 
     @Override

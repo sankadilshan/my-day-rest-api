@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class DaoSql {
 
     public static final String GET_ALL_EXPENSES= "SELECT " +
+            "id," +
             "userId," +
             "amount," +
             "type," +

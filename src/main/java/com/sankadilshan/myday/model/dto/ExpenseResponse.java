@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 public class ExpenseResponse {
+    private Long id;
     private Long userId;
     private double amount;
     private String type;

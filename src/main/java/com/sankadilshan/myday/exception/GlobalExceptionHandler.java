@@ -1,53 +1,81 @@
 package com.sankadilshan.myday.exception;
 
 import com.sankadilshan.myday.model.dto.ErrorResponse;
+import com.sankadilshan.myday.utils.CustomHttpStatus;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
 
-
+@Slf4j
 @ControllerAdvice
-public class GlobalExceptionHandler  {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler({AuthenticationException.class})
+    @ResponseBody
+    public ResponseEntity<Object> handleAuthenticationException(Exception e) {
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        return errorResponseBuilder(null, "Authentication Failed at controller advice");
+    }
 
     @ExceptionHandler(RowMapperException.class)
     public ResponseEntity<Object> handleRowMapperException(RowMapperException rowMapperException){
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        return errorResponseBuilder(status, rowMapperException.getMessage());
+        return errorResponseBuilder(null, rowMapperException.getMessage());
     }
 
     @ExceptionHandler(value = {UserNameNotFoundException.class})
     public ResponseEntity<Object> handleUsernameNotFoundException(UserNameNotFoundException userNameNotFoundException) {
         HttpStatus status= HttpStatus.NOT_FOUND;
-        return errorResponseBuilder(status, userNameNotFoundException.getMessage());
+        return errorResponseBuilder(null, userNameNotFoundException.getMessage());
     }
 
     @ExceptionHandler(UserSignUpFailedException.class)
     public ResponseEntity<Object> handleSignupFaildException(UserSignUpFailedException userSignUpFailedException) {
         HttpStatus status= HttpStatus.INTERNAL_SERVER_ERROR;
-        return errorResponseBuilder(status, userSignUpFailedException.getMessage());
+        return errorResponseBuilder(null, userSignUpFailedException.getMessage());
     }
 
+    @ExceptionHandler(InvalidFirstNameException.class)
+    public ResponseEntity<Object> handleInvalidFirstNameException(InvalidFirstNameException invalidFirstNameException) {
+        CustomHttpStatus status= CustomHttpStatus.FIRSTNAME_INVALID_ERROR;
+        return errorResponseBuilder(status, invalidFirstNameException.getMessage());
+    }
     @ExceptionHandler(InvalidUserNameException.class)
     public ResponseEntity<Object> handleInvalidUsernameException(InvalidUserNameException invalidUserNameException){
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        return errorResponseBuilder(status, invalidUserNameException.getMessage());
+        return errorResponseBuilder(null, invalidUserNameException.getMessage());
     }
     @ExceptionHandler(BadCredentialException.class)
     public ResponseEntity<Object> handleIBadCredentailException(BadCredentialException badCredentialException){
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        return errorResponseBuilder(status, badCredentialException.getMessage());
+        return errorResponseBuilder(null, badCredentialException.getMessage());
     }
 
-    @ExceptionHandler(DataAccessException.class)
-    public ResponseEntity<Object> handleDataAccessException(DataAccessException dataAccessException){
+    @ExceptionHandler({DataAccessException.class})
+    public ResponseEntity<Object> handleDataAccessException(DataAccessException dataAccessException, WebRequest webRequest){
         HttpStatus status = HttpStatus.NO_CONTENT;
-        return errorResponseBuilder(status, dataAccessException.getMessage());
+        log.error("Occurred data access exception: {}", dataAccessException.getMessage(), dataAccessException);
+//        return handleExceptionInternal(dataAccessException, dataAccessException.getMessage(), new HttpHeaders(), status, webRequest);
+        return errorResponseBuilder(null, dataAccessException.getMessage());
     }
-    private ResponseEntity<Object> errorResponseBuilder(HttpStatus status, String message) {
+
+    @ExceptionHandler(value = {ConvertObjectToMapException.class})
+    public ResponseEntity<Object> handleDataAccessException(ConvertObjectToMapException convertObjectToMapException, WebRequest webRequest){
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        log.error("Occurred data access exception: {}", convertObjectToMapException.getMessage(), convertObjectToMapException);
+        return handleExceptionInternal(convertObjectToMapException, convertObjectToMapException.getMessage(), new HttpHeaders(), status, webRequest);
+//        return errorResponseBuilder(null, dataAccessException.getMessage());
+    }
+    private ResponseEntity<Object> errorResponseBuilder(CustomHttpStatus status, String message) {
         ErrorResponse errorResponse = new ErrorResponse(status,status.value(), message, LocalDateTime.now());
         return ErrorResponseBuilder.build(errorResponse);
     }
