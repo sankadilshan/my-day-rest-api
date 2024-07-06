@@ -93,6 +93,8 @@ public final class PersistenceUtil {
                         .builder()
                         .id(rs.getLong("id"))
                         .email(rs.getString("email"))
+                        .firstName(rs.getString("firstName"))
+                        .lastName(rs.getString("lastName"))
                         .password(rs.getString("password"))
                         .roles(rs.getString("roles"))
                         .build();

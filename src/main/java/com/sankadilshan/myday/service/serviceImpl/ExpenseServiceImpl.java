@@ -30,7 +30,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<ExpenseResponse> queryAllExpenses() {
+    public List<ExpenseResponse> queryAllExpenses() throws RuntimeException {
         log.info("Expense Service :: query all expenses :: service level");
         return expenseDao.queryAllExpenses();
     }
@@ -92,6 +92,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     public ExpenseResponse insertExpense(ExpenseInput expense) {
         log.info("Expense Service :: insert an expense :: service level");
         return expenseDao.insertExpense(expense);
+    }
+
+    @Override
+    public Map<String, Object> getSummary(Map<String, Object> input) throws Exception {
+        log.info("Expense Service :: get expense summary :: service level");
+        return expenseDao.getSummary(input);
     }
 
 }

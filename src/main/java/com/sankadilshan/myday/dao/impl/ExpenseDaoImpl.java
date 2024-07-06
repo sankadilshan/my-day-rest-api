@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -43,7 +44,7 @@ public class ExpenseDaoImpl implements ExpenseDao {
     }
 
     @Override
-    public List<ExpenseResponse> queryAllExpenses() {
+    public List<ExpenseResponse> queryAllExpenses() throws RuntimeException {
         log.info("Expense Dao :: query all expense :: repository level");
 
         List<ExpenseResponse> queryResponse = namedTemplate.query(DaoSql.GET_ALL_EXPENSES, new PersistenceUtil.Expense.ExpenseResponseMapper());
@@ -91,6 +92,17 @@ public class ExpenseDaoImpl implements ExpenseDao {
             int id= namedTemplate.update(DaoSql.INSERT_EXPENSE, parameters);
             log.info("id {}",id);
             return new ExpenseResponse();
+    }
+
+    @Override
+    public Map<String, Object> getSummary(Map<String, Object> input) throws Exception {
+        log.info("Expense Service :: get summary for filter :: repository level");
+        try {
+return null;
+        }catch (Exception e) {
+            log.error("error");
+            throw new Exception();
+        }
     }
 
     private String getCurrentUserName() {

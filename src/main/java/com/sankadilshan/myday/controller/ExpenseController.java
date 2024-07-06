@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.Map;
 @RequestMapping("/api/v1/expense")
 public class ExpenseController {
     
-    private ExpenseService expenseService;
+    private final ExpenseService expenseService;
 
     @Autowired
     private ExpenseController(ExpenseService expenseService){
@@ -31,15 +32,14 @@ public class ExpenseController {
     }
 
     @GetMapping("/")
-    public GeneralResponse queryAllExpenses() {
+    public ResponseEntity<GeneralResponse> queryAllExpenses() {
         log.info("Expense Service :: query all expense :: controller level");
         List<ExpenseResponse> expenseResponses = expenseService.queryAllExpenses();
-//        throw new InvalidFirstNameException("sanka");
         return ResponseUtil.getGeneralResponse(expenseResponses);
     }
 
     @GetMapping("/{userId}")
-    public GeneralResponse queryAllExpensesByUserId(@PathVariable(name = "userId") Long userId) {
+    public ResponseEntity<GeneralResponse> queryAllExpensesByUserId(@PathVariable(name = "userId") Long userId) {
         log.info("Expense Service :: query all expenses by user id :: controller level");
         List<ExpenseResponse> expenseResponses = expenseService.queryExpenseByUserId(userId);
         return ResponseUtil.getGeneralResponse(expenseResponses);
@@ -54,24 +54,36 @@ public class ExpenseController {
             @ApiResponse(responseCode = "404", description = "end point not found",
                     content = @Content) })
    @PostMapping("/")
-   public GeneralResponse insertExpense(@RequestBody ExpenseInput expense) {
+   public ResponseEntity<GeneralResponse> insertExpense(@RequestBody ExpenseInput expense) {
        log.info("Expense Service :: insert an expense :: controller level");
        ExpenseResponse expenseResponse = expenseService.insertExpense(expense);
        return ResponseUtil.getGeneralResponse(expenseResponse);
    }
 
     @GetMapping("/user")
-    public GeneralResponse queryExpenseByUserId(@RequestParam("userId") Long id) {
+    public ResponseEntity<GeneralResponse> queryExpenseByUserId(@RequestParam("userId") Long id) {
         log.info("Expense Service :: query expense by userId: {} :: controller level", id);
         List<ExpenseResponse> expenseResponses = expenseService.queryExpenseByUserId(id);
         return ResponseUtil.getGeneralResponse(expenseResponses);
     }
 
-    @GetMapping("/user/expenses")
-    public GeneralResponse queryAllMydayUaersWithExpense() {
+    @GetMapping("/user/expense")
+    public ResponseEntity<GeneralResponse> queryAllMydayUaersWithExpense() {
         log.info("Expense Service :: query all mydayuser, expense :: controller level");
         List<Map<String, Object>> queryMapResponse = expenseService.queryAllUsersWithExpense();
         return ResponseUtil.getGeneralResponse(queryMapResponse);
 
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<GeneralResponse> queryExpenseSummary(@RequestBody Map<String, Object> input) throws Exception {
+        log.info("Expense Service :: query expense summary with type filter {}", input);
+        try {
+            Map<String, Object> summary =expenseService.getSummary(input);
+            return ResponseUtil.getGeneralResponse(summary);
+        }catch (Exception e) {
+            log.error("error when retrieving expense summary" ,e);
+            throw new Exception();
+        }
     }
 }

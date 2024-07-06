@@ -16,4 +16,6 @@ public interface ExpenseDao {
     List<ExpenseResponse> queryExpenseByUserId(Long id);
 
     ExpenseResponse insertExpense(ExpenseInput expenseInput) ;
+
+    Map<String, Object> getSummary(Map<String, Object> input) throws Exception;
 }

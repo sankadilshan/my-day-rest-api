@@ -70,6 +70,8 @@ public class DaoSql {
     public static final String MYDAYUSER_FIND_BY_USERNAME = "SELECT "+
             "mu.id, " +
             "mu.email," +
+            "mu.firstName," +
+            "mu.lastName," +
             "mu.password, " +
             "r.roles " +
             "FROM "+

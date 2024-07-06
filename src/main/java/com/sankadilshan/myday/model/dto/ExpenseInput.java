@@ -12,5 +12,5 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ExpenseInput {
     private double amount;
-    private String type;
+    private ExpenseType type;
 }
