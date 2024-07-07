@@ -30,6 +30,21 @@ public class DaoSql {
             " WHERE " +
             "userId = :userId";
 
+    public static final String GET_EXPENSES_BY_TYPE_FILTER= "SELECT " +
+            "id," +
+            "userId," +
+            "amount," +
+            "type," +
+            "expenseDate," +
+            "to_char(createdDate :: timestamp , 'yyyy-mm-dd HH:mm:ss') as  createdDate," +
+            "to_char(modifiedDate :: timestamp , 'yyyy-mm-dd HH:mm:ss') as modifiedDate" +
+            " FROM " +
+            PersistenceUtil.Expense.EXPENSE +
+            " WHERE " +
+            "userId = :userId " +
+            "and " +
+            "type in (:filters)";
+
     public static final String GET_ALL_MY_DAY_USERS= "SELECT " +
             "id," +
             "email," +
@@ -48,7 +63,7 @@ public class DaoSql {
             "r.id = :id";
 
 
-    public static final String GET_ALL_MY_DAY_USERS_WITH_EXPNSES = "SELECT " +
+    public static final String GET_ALL_MY_DAY_USERS_WITH_EXPENSES = "SELECT " +
             "mu.id as mId," +
             "mu.email," +
             "mu.firstName," +

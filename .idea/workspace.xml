@@ -10,21 +10,53 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/config/DataSourceConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/config/DataSourceConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/controller/ExpenseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/controller/ExpenseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/ExpenseDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/ExpenseDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/impl/ExpenseDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/impl/ExpenseDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/model/dto/ExpenseInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/model/dto/ExpenseInput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/sql/DaoSql.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/dao/sql/DaoSql.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/security/JwtAuthFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/security/JwtService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/security/JwtService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/ExpenseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/ExpenseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/serviceImpl/ExpenseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/service/serviceImpl/ExpenseServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/MapUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/MapUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Expense$ExpenseResponseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Expense$ExpenseResponseMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Expense.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Expense.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MyDayUser1RowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MyDayUser1RowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MydayUserRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser$MydayUserRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$MydayUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles$RolesRowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles$RolesRowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil$Roles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/sankadilshan/myday/utils/PersistenceUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/myday-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/myday-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/myday-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/myday-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.sankadilshan.myday.MydayApplicationTests.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/com.sankadilshan.myday.MydayApplicationTests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.sankadilshan.myday.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/com.sankadilshan.myday.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.sankadilshan.myday.MydayApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-com.sankadilshan.myday.MydayApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/config/DataSourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/config/DataSourceConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/ExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/ExpenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/ExpenseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/ExpenseDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/impl/ExpenseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/impl/ExpenseDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/sql/DaoSql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/dao/sql/DaoSql.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/model/dto/ExpenseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/model/dto/ExpenseInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/ExpenseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/ExpenseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/ExpenseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/ExpenseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/CustomHttpStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/CustomHttpStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/MapUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/MapUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/PersistenceUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/PersistenceUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/utils/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/validator/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +184,7 @@
       <recent name="com.sankadilshan.myday.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MydayApplication">
+  <component name="RunManager" selected="Gradle.myday [bootRun]">
     <configuration name="MydayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sankadilshan.myday.MydayApplication" />
       <module name="myday.main" />
@@ -165,6 +197,28 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="myday [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
     </configuration>
     <configuration name="myday [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -188,7 +242,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="myday [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="myday [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -199,7 +253,29 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="myday [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -216,20 +292,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="src/main/resources/docker/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MydayApplication" />
-        <item itemvalue="Docker.docker: Compose Deployment" />
         <item itemvalue="Gradle.myday [bootRun]" />
-        <item itemvalue="Gradle.myday [dependencies]" />
+        <item itemvalue="Gradle.myday [bootJar]" />
+        <item itemvalue="Gradle.myday [build]" />
+        <item itemvalue="Gradle.myday [clean]" />
+        <item itemvalue="Application.MydayApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -408,31 +477,41 @@
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="71" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/JwtService.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="73" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/config/CustomAuthenticationEntryPoint.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="76" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/AuthServiceImpl.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="78" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/AuthServiceImpl.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/security/MetaData.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="80" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/service/serviceImpl/AuthServiceImpl.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sankadilshan/myday/controller/ExpenseController.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="((InsufficientAuthenticationException)authException).detailMessage" custom="org.springframework.security.authentication.InsufficientAuthenticationException" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -52,7 +53,7 @@ public class ExpenseServiceImpl implements ExpenseService {
                         List<Map<String, Object>> expenseMapById = queryMapResponse.stream().filter(qm -> qm.get("mId") == id).toList();
                         Map<String, Object> responseMap = null;
                         if (mapById != null) {
-                            responseMap = mapUtil.cloneMap(mapById,
+                            responseMap = MapUtil.cloneMap(mapById,
                                     PersistenceUtil.MydayUser.MID,
                                     PersistenceUtil.MydayUser.EMAIL,
                                     PersistenceUtil.MydayUser.FIRST_NAME,
@@ -63,7 +64,7 @@ public class ExpenseServiceImpl implements ExpenseService {
                             
                             List<Map<String, Object>> expenses = new ArrayList<>();
                             expenseMapById.forEach(ex -> {
-                                Map<String, Object> data = mapUtil.cloneMap(ex,
+                                Map<String, Object> data = MapUtil.cloneMap(ex,
                                         PersistenceUtil.Expense.AMOUNT,
                                         PersistenceUtil.Expense.TYPE,
                                         PersistenceUtil.Expense.EXPENSE_DATE,
@@ -95,9 +96,41 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Map<String, Object> getSummary(Map<String, Object> input) throws Exception {
+    public List<Map<String, Object>> getSummary(Map<String, Object> input) throws Exception {
         log.info("Expense Service :: get expense summary :: service level");
-        return expenseDao.getSummary(input);
+        try {
+            List<ExpenseResponse> response = expenseDao.getSummary(input);
+            if (!response.isEmpty()) {
+
+                List<String> expenseTypes = response.stream().map(ExpenseResponse::getType).distinct().toList();
+                List<Map<String, Object>> mappedResponse = new ArrayList<>();
+
+                for (String type : expenseTypes) {
+
+                    Map<String, Object> summeryMap = new HashMap<>();
+                    Map<String, Object> totalMap = new HashMap<>();
+
+                    List<ExpenseResponse> expenses = response.stream().filter(res -> res.getType().equals(type)).toList();
+                    Double totalAmount = expenses.stream().map(ExpenseResponse::getAmount).reduce(0D, Double::sum);
+                    long totalDate = expenses.stream().map(ExpenseResponse::getExpenseDate).distinct().toList().size();
+
+                    totalMap.put("results", expenses.size());
+                    totalMap.put("amount", totalAmount);
+                    totalMap.put("numberOfExpenseDates", totalDate);
+
+                    summeryMap.put("expenseType", type);
+                    summeryMap.put("total", totalMap);
+                    summeryMap.put("result", expenses);
+
+                    mappedResponse.add(summeryMap);
+
+                }
+                return mappedResponse;
+            }
+            return new ArrayList<>();
+        } catch (Exception e) {
+            throw new Exception();
+        }
     }
 
 }

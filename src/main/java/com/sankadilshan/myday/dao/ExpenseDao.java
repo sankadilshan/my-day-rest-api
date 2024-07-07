@@ -17,5 +17,5 @@ public interface ExpenseDao {
 
     ExpenseResponse insertExpense(ExpenseInput expenseInput) ;
 
-    Map<String, Object> getSummary(Map<String, Object> input) throws Exception;
+    List<ExpenseResponse> getSummary(Map<String, Object> input) throws Exception;
 }

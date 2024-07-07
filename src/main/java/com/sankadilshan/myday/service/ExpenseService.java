@@ -15,5 +15,5 @@ public interface ExpenseService {
 
     ExpenseResponse insertExpense(ExpenseInput expense);
 
-    Map<String, Object> getSummary(Map<String, Object> input) throws Exception;
+    List<Map<String, Object>> getSummary(Map<String, Object> input) throws Exception;
 }

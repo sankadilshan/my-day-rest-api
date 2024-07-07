@@ -1,0 +1,6 @@
+datasource:
+  db:
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/expense

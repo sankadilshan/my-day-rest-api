@@ -75,11 +75,11 @@ public class ExpenseController {
 
     }
 
-    @GetMapping("/summary")
+    @PostMapping("/summary")
     public ResponseEntity<GeneralResponse> queryExpenseSummary(@RequestBody Map<String, Object> input) throws Exception {
         log.info("Expense Service :: query expense summary with type filter {}", input);
         try {
-            Map<String, Object> summary =expenseService.getSummary(input);
+            List<Map<String, Object>> summary =expenseService.getSummary(input);
             return ResponseUtil.getGeneralResponse(summary);
         }catch (Exception e) {
             log.error("error when retrieving expense summary" ,e);

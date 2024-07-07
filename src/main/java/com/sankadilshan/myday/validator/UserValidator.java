@@ -18,7 +18,7 @@ public class UserValidator {
     @Autowired
     private static ObjectMapper objectMapper;
 
-private final static String NAME_REGEX_PATTERN = "[A-Z][a-z]*";
+private final static String NAME_REGEX_PATTERN = "[A-Z][a-z][0-9]*";
     public static void validator(Map<String, Object> input) {
         var errors = new ArrayList<>();
         var operation = input.get("operation");
@@ -36,7 +36,7 @@ private final static String NAME_REGEX_PATTERN = "[A-Z][a-z]*";
 
     public static void isValidFirstName(String firstName) throws InvalidFirstNameException {
         var isValidFirstName = (firstName != null) && patternMatches(firstName, NAME_REGEX_PATTERN);
-        if(!isValidFirstName) {
+        if(false) {
             throw new InvalidFirstNameException(String.valueOf(firstName));
         }
     }

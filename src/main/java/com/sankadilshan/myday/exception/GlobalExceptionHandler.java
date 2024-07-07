@@ -62,10 +62,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({DataAccessException.class})
     public ResponseEntity<Object> handleDataAccessException(DataAccessException dataAccessException, WebRequest webRequest){
-        HttpStatus status = HttpStatus.NO_CONTENT;
+        CustomHttpStatus status = CustomHttpStatus.DB_EXPENSE_DATA_FETCH_ERROR;
         log.error("Occurred data access exception: {}", dataAccessException.getMessage(), dataAccessException);
-//        return handleExceptionInternal(dataAccessException, dataAccessException.getMessage(), new HttpHeaders(), status, webRequest);
-        return errorResponseBuilder(null, dataAccessException.getMessage());
+        return errorResponseBuilder(status, dataAccessException.getMessage());
+    }
+
+    @ExceptionHandler(value = {UserTokenExpiredException.class})
+    public ResponseEntity<Object>  handleUsertokenExpiredException( UserTokenExpiredException userTokenExpiredException) {
+        log.error("Occurred data access exception: {}", userTokenExpiredException.getMessage(), userTokenExpiredException);
+        CustomHttpStatus status = CustomHttpStatus.USER_UNATHORIZED;
+        return errorResponseBuilder( status, userTokenExpiredException.getMessage());
     }
 
     @ExceptionHandler(value = {ConvertObjectToMapException.class})

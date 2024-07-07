@@ -1,5 +1,6 @@
 package com.sankadilshan.myday.security;
 
+import com.sankadilshan.myday.exception.UserTokenExpiredException;
 import com.sankadilshan.myday.utils.DateUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -66,12 +67,16 @@ public class JwtService {
 
 
     private Claims extractallClaims(String token) {
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+       try {
+           return Jwts
+                   .parserBuilder()
+                   .setSigningKey(getSignKey())
+                   .build()
+                   .parseClaimsJws(token)
+                   .getBody();
+       } catch (Exception e) {
+           throw new UserTokenExpiredException(token, e);
+       }
     }
 
     private Boolean isTokenExpired(String token) {

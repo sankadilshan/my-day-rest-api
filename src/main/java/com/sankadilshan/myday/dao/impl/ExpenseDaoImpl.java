@@ -8,6 +8,8 @@ import com.sankadilshan.myday.model.MyDayUser;
 import com.sankadilshan.myday.model.dto.ExpenseInput;
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
+import com.sankadilshan.myday.security.MetaData;
+import com.sankadilshan.myday.utils.MapUtil;
 import com.sankadilshan.myday.utils.PersistenceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -22,9 +24,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 
@@ -57,7 +57,7 @@ public class ExpenseDaoImpl implements ExpenseDao {
         log.info("Expense service :: query all mydayuser, expense :: repository level");
 
         try {
-            return namedTemplate.queryForList(DaoSql.GET_ALL_MY_DAY_USERS_WITH_EXPNSES, (SqlParameterSource) null);
+            return namedTemplate.queryForList(DaoSql.GET_ALL_MY_DAY_USERS_WITH_EXPENSES, (SqlParameterSource) null);
         }catch (Exception e){
             log.error(e.getMessage(),e.getCause());
             throw new RuntimeException();
@@ -79,7 +79,7 @@ public class ExpenseDaoImpl implements ExpenseDao {
         log.info("Expense Service :: insert expense :: repository level");
 
         MapSqlParameterSource parameters = new MapSqlParameterSource();
-            String currentUserName = getCurrentUserName();
+            String currentUserName = MetaData.getCurrentLoginUsername();
             MyDayUser myDayUser = myDayUserDao.queryFindByUsername(currentUserName);
             if (myDayUser == null) {
                 throw new UserNameNotFoundException(currentUserName);
@@ -95,21 +95,21 @@ public class ExpenseDaoImpl implements ExpenseDao {
     }
 
     @Override
-    public Map<String, Object> getSummary(Map<String, Object> input) throws Exception {
+    public List<ExpenseResponse> getSummary(Map<String, Object> input) throws Exception {
         log.info("Expense Service :: get summary for filter :: repository level");
+
         try {
-return null;
+            String currentUserName = MetaData.getCurrentLoginUsername();
+            MyDayUser myDayUser = myDayUserDao.queryFindByUsername(currentUserName);
+            MapSqlParameterSource parameters = new MapSqlParameterSource();
+
+            parameters.addValue("filters", input.get("filters"));
+            parameters.addValue(PersistenceUtil.Expense.USERID, myDayUser.getId());
+
+            return namedTemplate.query(DaoSql.GET_EXPENSES_BY_TYPE_FILTER, parameters, new PersistenceUtil.Expense.ExpenseResponseMapper());
         }catch (Exception e) {
             log.error("error");
             throw new Exception();
         }
-    }
-
-    private String getCurrentUserName() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return authentication.getName();
-        }
-        return null;
     }
 }

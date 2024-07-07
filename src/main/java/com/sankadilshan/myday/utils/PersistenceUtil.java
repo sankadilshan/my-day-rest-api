@@ -1,5 +1,6 @@
 package com.sankadilshan.myday.utils;
 
+import com.sankadilshan.myday.exception.DataAccessException;
 import com.sankadilshan.myday.model.MyDayUser;
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
 import com.sankadilshan.myday.model.dto.MydayUserResponse;
@@ -33,7 +34,7 @@ public final class PersistenceUtil {
                 try {
 
                     ExpenseResponse expenseResponse = new ExpenseResponse();
-                    expenseResponse.setId(rs.getLong("id"));
+                    expenseResponse.setId(0l);
                     expenseResponse.setUserId(rs.getLong("userId"));
                     expenseResponse.setType(rs.getString("type"));
                     expenseResponse.setAmount(rs.getDouble("amount"));
@@ -46,7 +47,7 @@ public final class PersistenceUtil {
 
                 } catch (Exception e){
                     logger.error(e.getMessage());
-                    return new ExpenseResponse();
+                    throw new DataAccessException();
                 }
             }
         }

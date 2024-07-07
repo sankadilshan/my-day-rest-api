@@ -7,6 +7,7 @@ public enum CustomHttpStatus{
     LASTNAME_INVALID_ERROR(601, "Invalid Lastname"),
     EMAIL_INVALID_ERROR(602, "Invalid Email Address"),
 
+    DB_EXPENSE_DATA_FETCH_ERROR(700, "Failed to fetch expense data"),
 
     USER_UNATHORIZED(401, "User Unathorized");
 

@@ -30,7 +30,7 @@ public class MetaData {
         MetaData.userService = userService;
     }
 
-    private static String getCurrentLoginUsername(){
+    public static String getCurrentLoginUsername(){
         String userName = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
