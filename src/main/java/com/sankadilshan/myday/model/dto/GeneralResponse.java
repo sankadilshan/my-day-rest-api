@@ -16,5 +16,6 @@ public class GeneralResponse {
     private Object data;
     private int status;
     private LocalDateTime timeStamp;
+    private String metaToken;
 
 }

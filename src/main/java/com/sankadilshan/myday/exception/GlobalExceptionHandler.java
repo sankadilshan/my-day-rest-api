@@ -1,7 +1,8 @@
 package com.sankadilshan.myday.exception;
 
+import com.sankadilshan.myday.enums.CustomHttpStatus;
 import com.sankadilshan.myday.model.dto.ErrorResponse;
-import com.sankadilshan.myday.utils.CustomHttpStatus;
+import com.sankadilshan.myday.utils.ErrorResponseBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -44,10 +45,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return errorResponseBuilder(null, userSignUpFailedException.getMessage());
     }
 
-    @ExceptionHandler(InvalidFirstNameException.class)
-    public ResponseEntity<Object> handleInvalidFirstNameException(InvalidFirstNameException invalidFirstNameException) {
-        CustomHttpStatus status= CustomHttpStatus.FIRSTNAME_INVALID_ERROR;
-        return errorResponseBuilder(status, invalidFirstNameException.getMessage());
+    @ExceptionHandler(UserValidationFailedException.class)
+    public ResponseEntity<Object> handleInvalidFirstNameException(UserValidationFailedException userValidationFailedException) {
+        CustomHttpStatus status = userValidationFailedException.getCustomHttpStatus();
+        return errorResponseBuilder(status, userValidationFailedException.getMessage());
     }
     @ExceptionHandler(InvalidUserNameException.class)
     public ResponseEntity<Object> handleInvalidUsernameException(InvalidUserNameException invalidUserNameException){
@@ -70,7 +71,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {UserTokenExpiredException.class})
     public ResponseEntity<Object>  handleUsertokenExpiredException( UserTokenExpiredException userTokenExpiredException) {
         log.error("Occurred data access exception: {}", userTokenExpiredException.getMessage(), userTokenExpiredException);
-        CustomHttpStatus status = CustomHttpStatus.USER_UNATHORIZED;
+        CustomHttpStatus status = CustomHttpStatus.USER_UNAUTHORIZED;
         return errorResponseBuilder( status, userTokenExpiredException.getMessage());
     }
 

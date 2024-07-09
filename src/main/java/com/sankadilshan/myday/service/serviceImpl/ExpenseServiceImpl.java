@@ -3,7 +3,6 @@ package com.sankadilshan.myday.service.serviceImpl;
 import com.sankadilshan.myday.dao.ExpenseDao;
 import com.sankadilshan.myday.model.dto.ExpenseInput;
 import com.sankadilshan.myday.model.dto.ExpenseResponse;
-import com.sankadilshan.myday.model.dto.MydayUserResponse;
 import com.sankadilshan.myday.service.ExpenseService;
 import com.sankadilshan.myday.utils.MapUtil;
 import com.sankadilshan.myday.utils.PersistenceUtil;
@@ -22,12 +21,9 @@ import java.util.stream.Collectors;
 public class ExpenseServiceImpl implements ExpenseService {
 
     private ExpenseDao expenseDao;
-    private MapUtil mapUtil;
-
     @Autowired
-    public ExpenseServiceImpl(ExpenseDao expenseDao, MapUtil mapUtil){
+    public ExpenseServiceImpl(ExpenseDao expenseDao) {
         this.expenseDao= expenseDao;
-        this.mapUtil= mapUtil;
     }
 
     @Override

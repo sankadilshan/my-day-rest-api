@@ -1,4 +1,4 @@
-package com.sankadilshan.myday.exception;
+package com.sankadilshan.myday.utils;
 
 import com.sankadilshan.myday.model.dto.ErrorResponse;
 import org.springframework.http.HttpHeaders;

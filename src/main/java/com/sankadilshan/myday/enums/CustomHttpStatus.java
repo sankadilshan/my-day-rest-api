@@ -1,4 +1,4 @@
-package com.sankadilshan.myday.utils;
+package com.sankadilshan.myday.enums;
 
 public enum CustomHttpStatus{
 
@@ -9,7 +9,7 @@ public enum CustomHttpStatus{
 
     DB_EXPENSE_DATA_FETCH_ERROR(700, "Failed to fetch expense data"),
 
-    USER_UNATHORIZED(401, "User Unathorized");
+    USER_UNAUTHORIZED(401, "User Unauthorized");
 
     private int value;
     private String message;

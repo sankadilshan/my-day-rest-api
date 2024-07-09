@@ -1,10 +1,8 @@
 package com.sankadilshan.myday.model.dto;
 
-import com.sankadilshan.myday.utils.CustomHttpStatus;
+import com.sankadilshan.myday.enums.CustomHttpStatus;
 import lombok.*;
-import org.springframework.http.HttpStatus;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor

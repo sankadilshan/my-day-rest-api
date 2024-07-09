@@ -1,13 +1,12 @@
 package com.sankadilshan.myday.controller;
 
 import com.sankadilshan.myday.Constants;
-import com.sankadilshan.myday.exception.DataAccessException;
-import com.sankadilshan.myday.exception.InvalidFirstNameException;
-import com.sankadilshan.myday.exception.UserSignUpFailedException;
 import com.sankadilshan.myday.model.dto.AuthInput;
 import com.sankadilshan.myday.model.dto.AuthResponse;
+import com.sankadilshan.myday.model.dto.GeneralResponse;
 import com.sankadilshan.myday.model.dto.MyDayUserInput;
 import com.sankadilshan.myday.service.AuthService;
+import com.sankadilshan.myday.utils.ResponseUtil;
 import com.sankadilshan.myday.validator.UserValidator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -47,9 +46,9 @@ public class AuthController {
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = @Content) })
     @PostMapping("/sign")
-    public ResponseEntity<Object> sign(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "user sign in", required = true, content = @Content(schema = @Schema(implementation = AuthInput.class))) @RequestBody Map<String, Object> user) {
+    public ResponseEntity<GeneralResponse> sign(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "user sign in", required = true, content = @Content(schema = @Schema(implementation = AuthInput.class))) @RequestBody Map<String, Object> user) {
         AuthResponse authResponse = authService.sign(user);
-        return new ResponseEntity<>(authResponse, HttpStatus.OK);
+        return ResponseUtil.getGeneralResponse(authResponse);
     }
 
     @PostMapping("/signup")
